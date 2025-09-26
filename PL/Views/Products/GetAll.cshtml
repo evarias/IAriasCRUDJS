@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Usuarios</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-1">
+           @*  <button class="btn btn-success" onclick="GetAll()">
+                +
+            </button> *@
+        </div>
+    </div>
+</div>
+
+<table class="table-hover" id="tableuser">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Contraseña</th>
+            <th>FechaNacimiento</th>
+            <th>Sexo</th>
+            <th>Telefono</th>
+            <th>Celular</th>
+            <th>Curp</th>
+
+
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/Productrjs.js"></script>
