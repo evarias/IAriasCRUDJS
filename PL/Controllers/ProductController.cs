@@ -12,6 +12,12 @@ namespace PL.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Form()
+        {
+            return View();
+        }
+
         // GET: Product/Details/5
         public ActionResult Details(int id)
         {

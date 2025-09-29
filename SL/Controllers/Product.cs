@@ -30,48 +30,73 @@ namespace SL.Controllers
         }
 
 
-       
-        //[Route("GetAll")]
-        //public IActionResult GetAll()
-        //{
-        //    ML.Usuario usuario = new ML.Usuario();
-        //    usuario.Rol = new ML.Rol();
+        [HttpPost]
+        [Route("Add")]
+        public IActionResult Add(ML.Products products)
+        {
+            ML.Products product = new ML.Products();
+            product.Supplier = new ML.Suppliers();
+            product.Category = new ML.Categories();
 
-        //    ML.Result result = _usuario.GetAllLINQ();
+            ML.Result result = BL.Product.Add(products);
+            if (result.Correct)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, result.ErrorMessage);
+            }
+        }
 
-        //    if (result.Correct)
-        //    {
-        //        return Ok(result);
-        //    }
-        //    else
-        //    {
-        //        return StatusCode(StatusCodes.Status500InternalServerError, result.ErrorMessage);
-        //    }
-        //}
+        [HttpPut]
+        [Route("Update")]
+        public IActionResult Update(ML.Products products)
+        {
+            ML.Products product = new ML.Products();
+            product.Supplier = new ML.Suppliers();
+            product.Category = new ML.Categories();
+
+            ML.Result result = BL.Product.Update(products);
+            if (result.Correct)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, result.ErrorMessage);
+            }
+        }
 
         // GET api/<Product>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("GetById")]
+        public IActionResult GetById(int id)
         {
-            return "value";
-        }
 
-        // POST api/<Product>
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<Product>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
+            ML.Result result = BL.Product.GetById(id);
+            if (result.Correct)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, result.ErrorMessage);
+            }
         }
 
         // DELETE api/<Product>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("Delete")]
+        public IActionResult Delete(int id)
         {
+            ML.Result result = BL.Product.Delete(id);
+            if (result.Correct)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, result.ErrorMessage);
+            }
         }
     }
 }

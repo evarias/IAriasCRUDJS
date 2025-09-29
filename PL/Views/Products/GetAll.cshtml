@@ -3,35 +3,108 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Usuarios</h1>
+<h1>Products</h1>
 <div class="container">
     <div class="row">
         <div class="col-1">
-           @*  <button class="btn btn-success" onclick="GetAll()">
+            <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 +
-            </button> *@
+            </button>
         </div>
     </div>
 </div>
 
-<table class="table-hover" id="tableuser">
-    <thead>
-        <tr>
-            <th>Username</th>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Contraseña</th>
-            <th>FechaNacimiento</th>
-            <th>Sexo</th>
-            <th>Telefono</th>
-            <th>Celular</th>
-            <th>Curp</th>
+<div class="table-responsive">
+    <table class="table table-striped table-hover align-middle" id="tableproduct">
+        <thead class="table-dark">
+            <tr>
+
+                <th>Edit</th>
+                <th>ProductName</th>
+                <th>QuantityPerUnit</th>
+                <th>UnitPrice</th>
+                <th>UnitsInStock</th>
+                <th>UnitsOnOrder</th>
+                <th>ReorderLevel</th>
+                <th>Discontinued</th>
+                <th>Supplier</th>
+                <th>Category</th>
+                <th>Delete</th>
+                
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
 
 
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add new Product</h5>
+                <form id="addProductForm">
+                    <div class="form-group">
+                        <label for="productID" style="display: none;">productID:</label>
+                        <input type="text" id="productID" name="productID" style="display: none;">
+                    </div>
+                    <div class="form-group">
+                        <label for="productName">Product Name:</label>
+                        <input type="text" id="productName" name="productName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="QuantityPerUnit">QuantityPerUnit:</label>
+                        <input type="text" id="QuantityPerUnit" name="QuantityPerUnit" required>
+                       
+                    </div>
+                    <div class="form-group">
+                        <label for="UnitPrice">UnitPrice:</label>
+                        <input type="number" id="UnitPrice" name="UnitPrice" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="UnitsInStock">UnitsInStock:</label>
+                        <input type="text" id="UnitsInStock" name="UnitsInStock">
+                    </div>
+                    <div class="form-group">
+                        <label for="UnitsOnOrder">UnitsOnOrder:</label>
+                        <input type="text" id="UnitsOnOrder" name="UnitsOnOrder">
+                    </div>
+                    <div class="form-group">
+                        <label for="ReorderLevel">ReorderLevel:</label>
+                        <input type="text" id="ReorderLevel" name="ReorderLevel">
+                    </div>
+                    <div class="form-group">
+                        <label for="Discontinued">Discontinued:</label>
+                        <input type="text" id="Discontinued" name="Discontinued">
+                    </div>  
+                    <div class="form-group">
+                        <label for="Supplier">Supplier:</label>
+                        <input type="text" id="Supplier" name="Supplier">
+                    </div>
+                    <div class="form-group">
+                        <label for="Category">Category:</label>
+                        <input type="text" id="Category" name="Category">
+                    </div>
+                   
+                </form>
+                
+            </div>
 
+            <div class="modal-body">
+                <span id="NombreUsuario"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            
+             <button class="btn-success" onclick="AddProduct()" id="add" >Add Product</button>
+                <button class="btn-success" onclick="UpdateProduct()" id="update" style="display: none;">Update Product</button>
+                
+         
+                
+            </div>
+        </div>
+    </div>
+</div>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/js/Productrjs.js"></script>
